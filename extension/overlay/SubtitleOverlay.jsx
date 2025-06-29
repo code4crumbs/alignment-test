@@ -11,10 +11,9 @@ export default function SubtitleOverlay() {
   const [cue, setCue] = useState({ en: '', ko: '', id: null });
   const [mapping, setMapping] = useState({});
 
-  // Load precomputed alignment JSON
+  // Load precomputed alignment JSON from Dropbox (manual test)
   useEffect(() => {
-    const episodeId = location.pathname.match(/watch\/(\d+)/)?.[1] || 'default';
-    fetch(`https://code4crumbs.github.io/alignment-test/alignments/${episodeId}.json`)
+    fetch("https://www.dropbox.com/scl/fi/98oiautyoevmrq0jqfyfy/81237994.json?rlkey=3jk6mq8dwhfg7hgi7zx5u80y6&st=3b8qtavn&raw=1")
       .then(r => r.json())
       .then(setMapping)
       .catch(() => console.warn('Alignment JSON not found'));
