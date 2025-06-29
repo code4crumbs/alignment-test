@@ -23,9 +23,9 @@ const waitForVideo = () =>
   root.id = 'bilingual-subs-root';
   document.body.appendChild(root);
 
-  // 3. Dynamically load the React overlay bundle (built later)
-  //    This resolves to extension/overlay/index.js after you bundle.
-  await import(chrome.runtime.getURL('overlay/index.js'));
+  // 3. Dynamically load the React overlay bundle produced by Vite
+  //    (`npm run build` outputs extension/overlay/bundle.js)
+  await import(chrome.runtime.getURL('overlay/bundle.js'));
 
   /* 4. Wire up subtitle tracks → custom event for React overlay */
   const tracks = Array.from(video.textTracks || []);
@@ -43,7 +43,7 @@ const waitForVideo = () =>
     if (!(enCue && koCue)) return;
 
     const payload = {
-      id: enCue.id || Date.now(),  // unique cue id for alignment lookup
+      id: enCue.id || Date.now(),   // unique cue id for alignment lookup
       en: enCue.text || '',
       ko: koCue.text || ''
     };
