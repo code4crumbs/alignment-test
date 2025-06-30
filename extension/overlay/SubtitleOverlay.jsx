@@ -13,7 +13,7 @@ export default function SubtitleOverlay() {
 
   // Load precomputed alignment JSON from Dropbox (manual test)
   useEffect(() => {
-    fetch("https://www.dropbox.com/scl/fi/98oiautyoevmrq0jqfyfy/81262746.json?rlkey=3jk6mq8dwhfg7hgi7zx5u80y6&raw=1")
+    fetch("https://raw.githubusercontent.com/code4crumbs/alignment-test/main/81262746.json")
       .then(r => r.json())
       .then(setMapping)
       .catch(() => console.warn('Alignment JSON not found'));
