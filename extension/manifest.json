@@ -3,16 +3,23 @@
   "name": "Bilingual Sub Colorizer",
   "description": "Color-aligned English↔Korean subtitles for Netflix.",
   "version": "0.1.0",
-  "permissions": ["storage", "scripting", "activeTab"],
+  "permissions": ["scripting"],
   "host_permissions": ["https://www.netflix.com/*"],
   "content_scripts": [
     {
-      "matches": ["https://www.netflix.com/*"],
+      "matches": ["https://www.netflix.com/watch/*"],
       "js": ["contentScript.js"],
-      "css": ["styles.css"]
+      "css": ["styles.css"],
+      "run_at": "document_idle"
     }
   ],
   "action": {
     "default_title": "Toggle Bilingual Subs"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["overlay/bundle.js"],
+      "matches": ["https://www.netflix.com/*"]
+    }
+  ]
 }
