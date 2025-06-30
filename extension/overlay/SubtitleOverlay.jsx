@@ -11,7 +11,7 @@ export default function SubtitleOverlay() {
   const [cue, setCue] = useState({ en: '', ko: '', id: null });
   const [mapping, setMapping] = useState({});
 
-  // Load precomputed alignment JSON from Dropbox (manual test)
+  // Load precomputed alignment JSON 
   useEffect(() => {
     fetch("https://raw.githubusercontent.com/code4crumbs/alignment-test/main/81262746.json")
       .then(r => r.json())
